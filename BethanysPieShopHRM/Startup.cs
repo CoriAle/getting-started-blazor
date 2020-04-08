@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BethanysPieShopHRM.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,27 @@ namespace BethanysPieShopHRM
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddHttpClient<Services.IEmployeeDataService, EmployeeDataService>(
+                    client =>
+                    {
+                        //Dirección del cliente al que se conecta
+                        client.BaseAddress = new Uri("https://localhost:44340/");
+                    }
+                );
+            services.AddHttpClient<ICountryDataService, CountryDataService>(
+                   client =>
+                   {
+                        //Dirección del cliente al que se conecta
+                        client.BaseAddress = new Uri("https://localhost:44340/");
+                   }
+               );
+            services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(
+                   client =>
+                   {
+                       //Dirección del cliente al que se conecta
+                       client.BaseAddress = new Uri("https://localhost:44340/");
+                   }
+               );
             services.AddServerSideBlazor()
                 //Para obtener una vista detallada de errores
                      .AddCircuitOptions(
