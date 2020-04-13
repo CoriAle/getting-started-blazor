@@ -23,15 +23,16 @@
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeedit">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Agregar Personal
                 </NavLink>
-                <NavLink class="list-group-item list-group-item-action bg-light" href="/logout">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span>
-                    LogOut
+                <NavLink class="list-group-item list-group-item-action bg-light"
+                         href="identity/account/logout">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                     (@context.User.Claims.FirstOrDefault(c => c.Type
-                  == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+                == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
                 </NavLink>
+
             </Authorized>
             <NotAuthorized>
-                <NavLink class="list-group-item list-group-item-action bg-light" href="/login">
+                <NavLink class="list-group-item list-group-item-action bg-light" href="/identity/account/login">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Login
                 </NavLink>
             </NotAuthorized>

@@ -40,8 +40,10 @@ namespace BethanysPieShopHRM
             //Acceder al contexto de un http, el cual contiene información Ej. Usuario
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //  .AddCookie();
+            services.AddAuthentication("Identity.Application")
+               .AddCookie();
             services.AddHttpClient<ICountryDataService, CountryDataService>(
                    client =>
                    {
